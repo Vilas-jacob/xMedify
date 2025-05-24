@@ -57,6 +57,7 @@ function SearchResults() {
     },[state,city]);
     
     const handleAppointmentBookingModal = (bookingDetails)=>{
+        console.log("Booking Details Received:", bookingDetails);
         setBookingDetails(bookingDetails);
         setIsBookingModalOpen(true);
     }

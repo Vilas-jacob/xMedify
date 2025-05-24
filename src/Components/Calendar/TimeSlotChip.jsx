@@ -3,7 +3,9 @@ import React from 'react';
 function TimeSlotChip({label,hospitalDetails,dateSelected, handleAppointmentBooking}) {
 
     const handleSlotClick = ()=>{
-        handleAppointmentBooking({...hospitalDetails, appointmentDate: dateSelected, appointmentTime: label});
+      console.log("Selected Date:", dateSelected);
+      console.log("Selected Time:", label);
+        handleAppointmentBooking({...hospitalDetails, bookingDate: dateSelected, bookingTime: label});
     }
     
   return (

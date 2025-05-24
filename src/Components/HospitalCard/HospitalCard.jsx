@@ -16,6 +16,7 @@ function HospitalCard({
     setIsCalendarOpen(!isCalenderOpen);
   };
   //console.log("Booking Date:", hospitalDetails);
+  //console.log("Booking Date:", hospitalDetails.bookingDate);
   return (
     <>
       <div className="flex flex-col justify-center gap-x-4 py-10 bg-white border border-gray-200 rounded-xl">
@@ -54,10 +55,10 @@ function HospitalCard({
             {booking && (
                  <div className="flex space-x-1 mt-2">
                  <span className="border border-blue-600 text-blue-600 rounded-md px-2 py-1 text-sm">
-                   {hospitalDetails.appointmentTime}
+                   {hospitalDetails.bookingTime}
                  </span>
                  <span className="border border-green-600 text-green-600 rounded-md px-2 py-1 text-sm">
-                   {format(new Date(hospitalDetails.appointmentDate), "dd MMMM yyyy")}
+                   {format(new Date(hospitalDetails.bookingDate), "dd MMMM yyyy")}
                  </span>
                </div>
             )}

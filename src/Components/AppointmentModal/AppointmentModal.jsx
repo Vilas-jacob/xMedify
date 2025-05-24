@@ -10,8 +10,17 @@ function AppointmentModal({ isBookingModalOpen, setIsBookingModalOpen, bookingDe
         e.preventDefault();
         triggerAppointmentEvent();
 
-        const bookings = localStorage.getItem("bookings") || "[]";
-        const oldAppointments = JSON.parse(bookings);
+        const bookings = localStorage.getItem("bookings");
+        let oldAppointments = [];
+
+        if (bookings) {
+            try {
+                oldAppointments = JSON.parse(bookings);
+            } catch (error) {
+                console.error("Error parsing bookings from localStorage:", error);
+            }
+        }
+
 
         localStorage.setItem(
             "bookings",
@@ -38,7 +47,7 @@ function AppointmentModal({ isBookingModalOpen, setIsBookingModalOpen, bookingDe
             eventDate: new Date().toISOString(),
         });
     };
-
+    //console.log(bookingDetails);
     return (
         <div className='fixed inset-0 flex items-center justify-center bg-gray bg-opacity-30 backdrop-blur-sm rounded-lg' style={{zIndex:999}}>
             <div className='modalContainer bg-sky-100 rounded-lg shadow-lg w-11/12 md:w-1/3 h-auto m-5' style={{zIndex: 1000}}>
@@ -69,13 +78,13 @@ function AppointmentModal({ isBookingModalOpen, setIsBookingModalOpen, bookingDe
                             <input
                                 className='appointmentDate rounded-lg bg-white p-3 shadow-md text-sky-400'
                                 type='text'
-                                value={bookingDetails.appointmentDate.toDateString()} 
+                                value={bookingDetails.bookingDate.toDateString()} 
                                 readOnly
                             />
                             <input
                                 className='appointmentTime rounded-lg bg-white p-3 shadow-md text-sky-400'
                                 type='text'
-                                value={bookingDetails.appointmentTime}
+                                value={bookingDetails.bookingTime}
                                 readOnly
                             />
                         </div>
