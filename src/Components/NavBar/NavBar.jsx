@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Logo from '../../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
      const [isTrayOpen, setIsTrayOpen] = useState(false);
+     const navigate = useNavigate();
   return (
     <>
         <div className='bg-sky-400 w-screen h-[60px] md:h-[40px] p-2 flex flex-wrap items-center justify-center text-white text-xs md:text-md md:font-semibold'>
@@ -23,7 +25,7 @@ function NavBar() {
                             <li>Software for Provider</li>
                             <li>Facilities</li>
                         </ul>
-                        <button className='bg-sky-400 h-[40px] md:px-2 lg:px-4 text-xs lg:text-md xl:text-lg rounded-xl text-white'>My Bookings</button>
+                        <button onClick={()=>navigate('/my-bookings')} className='bg-sky-400 h-[40px] md:px-2 lg:px-4 text-xs lg:text-md xl:text-lg rounded-xl text-white cursor-pointer'>My Bookings</button>
                     </div>
                 </div>
                 <div className='block md:hidden cursor-pointer'>
@@ -41,14 +43,14 @@ function NavBar() {
             isTrayOpen && (
                 <div className='flex flex-col gap-y-2 md:hidden px-4 sm:px-6 pb-2'>
                     <ul className='flex flex-col gap-y-2 items-center text-md '>
-                        <li>Find Doctors</li>
+                        <li>1Find Doctors</li>
                         <li>Hospitals</li>
                         <li>Medicines</li>
                         <li>Surgeries</li>
                         <li>Software for Provider</li>
                         <li>Facilities</li>
                     </ul>
-                    <button className='bg-sky-400 h-[40px] text-md rounded-xl text-white'>My Bookings</button>
+                    <button onClick={()=>navigate('/my-bookings')}  className='bg-sky-400 h-[40px] text-md rounded-xl text-white cursor-pointer'>My Bookings</button>
                 </div>
             )
            }

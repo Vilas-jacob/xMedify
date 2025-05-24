@@ -28,6 +28,7 @@ function SearchResults() {
     const [isBookingModalOpen, setIsBookingModalOpen]=useState(false);
     const [bookingDetails, setBookingDetails] = useState({});
     const [showBookingSuccess, setShowBookingSuccess] = useState(false);
+    
 
     //console.log("Modal state: ", isBookingModalOpen);
     

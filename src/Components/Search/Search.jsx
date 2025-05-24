@@ -6,6 +6,8 @@ function Search() {
   const [cities, setCities] = useState([]);
   const [stateSelected, setStateSelected] = useState("");
   const [citySelected, setCitySelected] = useState("");
+  const [showStateList, setShowStateList] = useState(false);
+  const [showCityList, setShowCityList] = useState(false);
   const navigate = useNavigate();
 
   async function getStateData() {
@@ -42,10 +44,12 @@ function Search() {
 
   function handleStateChange(e) {
     setStateSelected(e.target.value);
+    setShowStateList(false);
   }
 
   function handleCityChange(e) {
     setCitySelected(e.target.value);
+    setShowCityList(false);
   }
 
   function handleSearch() {
@@ -65,7 +69,7 @@ function Search() {
     <>
       <div className="flex flex-col w-full gap-y-2 lg:gap-y-4 md:flex-row justify-center items-center md:justify-between px-10 lg:px-30 py-10">
         <div id="state" className="w-full md:w-50">
-          <select
+          {/* <select
             name="state"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
             onChange={handleStateChange}
@@ -78,11 +82,32 @@ function Search() {
                 </option>
               );
             })}
-          </select>
+          </select> */}
+          <div
+            className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
+            onClick={() => setShowStateList(!showStateList)} // Toggle state list visibility
+          >
+            {stateSelected || "Select State"}
+          </div>
+          {showStateList && (
+            <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full">
+              {states.map((state) => (
+                <li
+                  key={state}
+                  className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                  onClick={() => handleStateChange(state)}
+                >
+                  {state}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
+        
+
         <div id="city" className="w-full md:w-50">
-          <select
+          {/* <select
             id="city"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
             onChange={handleCityChange}
@@ -95,12 +120,34 @@ function Search() {
                 </option>
               );
             })}
-          </select>
+          </select> */}
+                  
+
+          <div
+            className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
+            onClick={() => setShowCityList(!showCityList)} // Toggle city list visibility
+          >
+            {citySelected || "Select City"}
+          </div>
+          {showCityList && (
+            <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full">
+              {cities.map((city) => (
+                <li
+                  key={city}
+                  className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                  onClick={() => handleCityChange(city)}
+                >
+                  {city}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
+        
 
         <button
-          type="submit" 
-          id="searchBtn" 
+          type="submit"
+          id="searchBtn"
           className="flex flex-row justify-center items-center gap-x-2 bg-sky-400 w-full h-10 md:w-30 md:py-2 md:px-2 lg:px-4 text-md rounded-xl text-white align-center"
           onClick={handleSearch}
           disabled={!stateSelected || !citySelected}
