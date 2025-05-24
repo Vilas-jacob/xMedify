@@ -69,7 +69,7 @@ function Search() {
     <>
       <div className="flex flex-col w-full gap-y-2 lg:gap-y-4 md:flex-row justify-center items-center md:justify-between px-10 lg:px-30 py-10">
         <div id="state" className="w-full md:w-50">
-          {/* <select
+          <select
             name="state"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
             onChange={handleStateChange}
@@ -82,8 +82,9 @@ function Search() {
                 </option>
               );
             })}
-          </select> */}
-          <div
+          </select>
+
+          {/* <div
             className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
             onClick={() => setShowStateList(!showStateList)} // Toggle state list visibility
           >
@@ -101,13 +102,13 @@ function Search() {
                 </li>
               ))}
             </ul>
-          )}
-        </div>
+          )} */}
+        </div> 
 
         
 
         <div id="city" className="w-full md:w-50">
-          {/* <select
+          <select
             id="city"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
             onChange={handleCityChange}
@@ -120,10 +121,10 @@ function Search() {
                 </option>
               );
             })}
-          </select> */}
+          </select>
                   
 
-          <div
+          {/* <div
             className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
             onClick={() => setShowCityList(!showCityList)} // Toggle city list visibility
           >
@@ -141,8 +142,8 @@ function Search() {
                 </li>
               ))}
             </ul>
-          )}
-        </div>
+          )} */}
+        </div> 
         
 
         <button
