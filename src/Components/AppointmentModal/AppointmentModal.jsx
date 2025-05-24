@@ -25,10 +25,10 @@ function AppointmentModal({ isBookingModalOpen, setIsBookingModalOpen, bookingDe
         setPatientName("");
         setPatientPhoneNumber("");
         setIsBookingModalOpen(false);
-       // navigate('/my-bookings');
-       setTimeout(() => {
         navigate('/my-bookings');
-         }, 2000);
+    //    setTimeout(() => {
+    //     navigate('/my-bookings');
+    //      }, 2000);
     };
 
     const triggerAppointmentEvent = () => {

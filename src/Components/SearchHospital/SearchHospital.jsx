@@ -12,7 +12,7 @@ function SearchHospital({ hospitalList, filterHospital }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Filtered Hospitals:", filteredHospital); 
+    //.log("Filtered Hospitals:", filteredHospital); 
     filterHospital(filteredHospital);
   };
 

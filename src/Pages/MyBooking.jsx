@@ -10,7 +10,7 @@ function MyBooking() {
   useEffect(() => {
     const storedBooking = localStorage.getItem("bookings") || "[]";
     const parsedBookings = JSON.parse(storedBooking);
-    console.log("Parsed Bookings:", parsedBookings);
+    //console.log("Parsed Bookings:", parsedBookings);
     setBookings(parsedBookings);
     setFilteredAppointment(parsedBookings);
   }, []);
