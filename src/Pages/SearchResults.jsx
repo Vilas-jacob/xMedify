@@ -87,7 +87,7 @@ function SearchResults() {
                 hospitals.length > 0 && (
                     <div className='flex flex-col gap-y-2 justify-start items-center'>
                         <h1 className='text-lg font-bold text-blue-900'>{`${hospitals.length} medical centers available in `}
-                            <span>{city}</span>
+                            <span>{city.toLowerCase()}</span>
                         </h1>
                         <div className='flex items-center space-x-4 mb-5'>
                             <img src={TickIcon} height={24} width={24} alt='Tick Icon' />
