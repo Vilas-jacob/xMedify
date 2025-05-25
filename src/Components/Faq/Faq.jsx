@@ -35,7 +35,7 @@ function Faq() {
     <div className="py-10">
       <div className="container mx-auto">
         <h2 className="text-sky-400 font-semibold text-center text-lg">Get Your Answer</h2>
-        <h1 className="text-4xl text-center mb-2 text-blue-900 font-bold pb-4">Frequently Asked Questions</h1>
+        <h2 className="text-4xl text-center mb-2 text-blue-900 font-bold pb-4">Frequently Asked Questions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <img src={Faq_Img} alt="FAQs Banner" className="w-full h-auto" />
