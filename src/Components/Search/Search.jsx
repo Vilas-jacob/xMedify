@@ -8,8 +8,17 @@ function Search() {
   const [citySelected, setCitySelected] = useState("");
   const [showStateList, setShowStateList] = useState(false);
   const [showCityList, setShowCityList] = useState(false);
+  //const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  // const toggleDropdown = ()=>{
+  //   setIsOpen(!isOpen);
+  // }
+
+  // const handleOptionClick = ()=>{
+  //   stateSelected(state);
+  //   setIsOpen(false);
+  // }
   async function getStateData() {
     try {
       const response = await fetch(
@@ -42,13 +51,13 @@ function Search() {
     }
   }
 
-  function handleStateChange(e) {
-    setStateSelected(e.target.value);
+  function handleStateChange(state) {
+    setStateSelected(state);
     setShowStateList(false);
   }
 
-  function handleCityChange(e) {
-    setCitySelected(e.target.value);
+  function handleCityChange(city) {
+    setCitySelected(city);
     setShowCityList(false);
   }
 
@@ -68,7 +77,7 @@ function Search() {
   return (
     <>
       <div className="flex flex-col w-full gap-y-2 lg:gap-y-4 md:flex-row justify-center items-center md:justify-between px-10 lg:px-30 py-10">
-        <div id="state" className="w-full md:w-50">
+        {/* <div id="state" className="w-full md:w-50">
           <select
             name="state"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
@@ -83,31 +92,55 @@ function Search() {
               );
             })}
           </select>
-
-          {/* <div
-            className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
-            onClick={() => setShowStateList(!showStateList)} // Toggle state list visibility
-          >
-            {stateSelected || "Select State"}
-          </div>
+        </div> */}
+        <div id="state" className="relative w-full md:w-50">
+          <button className="bg-gray-100 rounded-xl px-10 py-2 w-full text-left" 
+            onClick={()=>setShowStateList(!showStateList)}>
+              {stateSelected || 'Select State'}
+              <span className="ml-2">&#9660;</span>
+          </button>
           {showStateList && (
-            <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full">
-              {states.map((state) => (
+               <ul className="absolute bg-white border border-gray-300 rounded-lg shadow-lg mt-1 w-full z-10">
+              {states.map((state)=>{
+                return (
+                  <li 
+                    key={state}
+                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer"  
+                    onClick={()=>handleStateChange(state)}>
+                      {state}
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+           
+        </div>
+
+           <div id="city" className="relative w-full md:w-50">
+          <button
+            className="dropdown-toggle bg-gray-100 rounded-xl px-10 py-2 w-full text-left flex justify-between items-center"
+            onClick={() => setShowCityList(!showCityList)}
+            disabled={!stateSelected}
+          >
+            {citySelected || "Select City"}
+            <span className="ml-2">&#9660;</span>
+          </button>
+          {showCityList && (
+            <ul className="dropdown-menu absolute bg-white border border-gray-300 rounded-lg shadow-lg mt-1 w-full z-10">
+              {cities.map((city) => (
                 <li
-                  key={state}
+                  key={city}
                   className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                  onClick={() => handleStateChange(state)}
+                  onClick={() => handleCityChange(city)}
                 >
-                  {state}
+                  {city}
                 </li>
               ))}
             </ul>
-          )} */}
-        </div> 
+          )}
+        </div>
 
-        
-
-        <div id="city" className="w-full md:w-50">
+        {/* <div id="city" className="w-full md:w-50">
           <select
             id="city"
             className="bg-gray-100 rounded-xl px-10 py-2 w-full"
@@ -122,29 +155,7 @@ function Search() {
               );
             })}
           </select>
-                  
-
-          {/* <div
-            className="bg-gray-100 rounded-xl px-10 py-2 w-full cursor-pointer"
-            onClick={() => setShowCityList(!showCityList)} // Toggle city list visibility
-          >
-            {citySelected || "Select City"}
-          </div>
-          {showCityList && (
-            <ul className="absolute z-10 bg-white border border-gray-300 rounded-lg w-full">
-              {cities.map((city) => (
-                <li
-                  key={city}
-                  className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                  onClick={() => handleCityChange(city)}
-                >
-                  {city}
-                </li>
-              ))}
-            </ul>
-          )} */}
-        </div> 
-        
+        </div> */}
 
         <button
           type="submit"

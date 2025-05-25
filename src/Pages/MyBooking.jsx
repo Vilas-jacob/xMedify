@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import SearchHospital from "../Components/SearchHospital/SearchHospital";
 import HospitalCard from "../Components/HospitalCard/HospitalCard";
+import MedifyApp from "../Components/MedifyApp/MedifyApp";
+import Footer from "../Components/Footer/Footer";
 
 function MyBooking() {
   const [bookings, setBookings] = useState([]);
@@ -39,7 +41,7 @@ function MyBooking() {
       <div className="bg-blue-100 flex flex-col justify-center">
         <div className="w-full flex justify-center mt-4">
           <div className="flex flex-col md:w-3/4 md:flex-row justify-center gap-y-4 pt-4">
-            <div className="flex flex-col md:flex-1 gap-y-4">
+            <div className="flex flex-col md:flex-1 gap-y-4 pb-4">
               {filteredAppointment.length > 0 ? (
                 filteredAppointment.map((hospital) => (
                   <HospitalCard
@@ -78,6 +80,8 @@ function MyBooking() {
           </div>
         </div>
       </div>
+      <MedifyApp />
+      <Footer />
     </>
   );
 }
